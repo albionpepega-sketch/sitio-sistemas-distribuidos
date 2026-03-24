@@ -1,126 +1,183 @@
 
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
+/* VARIABLES (nuevo estilo más moderno) */
 :root {
-    --primary: #6366f1;
-    --secondary: #4f46e5;
-    --accent: #22c55e;
-    --bg: #0f172a;
-    --card: #1e293b;
-    --text: #e2e8f0;
-    --gray: #94a3b8;
+    --bg: #0b0f19;
+    --card: #121826;
+    --primary: #3b82f6;
+    --secondary: #9333ea;
+    --text: #f1f5f9;
+    --subtext: #94a3b8;
 }
 
-
+/* BODY */
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: var(--bg);
+    background: linear-gradient(180deg, #0b0f19, #020617);
     color: var(--text);
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
 }
 
-
+/* HEADER */
 header {
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(10px);
-    padding: 15px 30px;
-    position: sticky;
-    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(2, 6, 23, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #1e293b;
 }
 
 header h1 {
-    text-align: center;
-    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-
+/* NAV */
 nav ul {
     display: flex;
-    justify-content: center;
-    gap: 20px;
     list-style: none;
+    gap: 20px;
 }
 
 nav a {
-    color: var(--text);
     text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 20px;
+    color: var(--subtext);
+    font-weight: 500;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* EFECTO SUBRAYADO MODERNO */
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--primary);
     transition: 0.3s;
 }
 
 nav a:hover {
-    background: var(--primary);
+    color: var(--text);
 }
 
-
-main {
-    flex: 1;
-    padding: 20px;
-    max-width: 1000px;
-    margin: auto;
+nav a:hover::after {
+    width: 100%;
 }
 
-
+/* HERO */
 .hero {
     text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 12px;
-    margin-bottom: 30px;
+    padding: 80px 20px;
+    background: radial-gradient(circle at top, #3b82f6, #020617);
 }
 
 .hero h2 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     margin-bottom: 10px;
 }
 
 .hero p {
-    color: #dbeafe;
+    color: var(--subtext);
+    font-size: 1.1rem;
 }
 
+/* MAIN */
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
+}
 
-.content, .services-list li {
+/* CARDS */
+.content {
     background: var(--card);
-    padding: 20px;
-    border-radius: 10px;
+    padding: 25px;
+    border-radius: 12px;
     margin-bottom: 20px;
+    border: 1px solid #1e293b;
+    transition: 0.3s;
 }
 
-.services-list {
+/* EFECTO HOVER PRO */
+.content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* TITULOS */
+.content h3 {
+    margin-bottom: 10px;
+}
+
+/* LISTAS */
+.content ul {
+    margin-top: 10px;
+}
+
+.content li {
+    margin: 8px 0;
+    color: var(--subtext);
+}
+
+/* GRID AUTOMÁTICO */
+main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-form {
-    background: var(--card);
+/* HERO ocupa todo */
+.hero {
+    grid-column: span 2;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
     padding: 20px;
-    border-radius: 10px;
+    background: #020617;
+    color: var(--subtext);
+    margin-top: 30px;
+}
+
+/* FORM (más moderno) */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 input, textarea {
     padding: 12px;
-    border-radius: 6px;
-    border: none;
-    margin-top: 5px;
-    background: #0f172a;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+    background: #020617;
     color: white;
 }
 
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+/* BOTÓN */
 button {
-    margin-top: 15px;
+    margin-top: 10px;
     padding: 12px;
+    border-radius: 8px;
     border: none;
-    border-radius: 6px;
-    background: var(--primary);
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -128,25 +185,26 @@ button {
 }
 
 button:hover {
-    background: var(--secondary);
+    transform: scale(1.05);
 }
 
+/* RESPONSIVE */
+@media (max-width: 768px) {
 
-footer {
-    text-align: center;
-    padding: 15px;
-    background: #020617;
-    color: var(--gray);
-}
-
-
-@media (max-width: 600px) {
-    .hero h2 {
-        font-size: 1.5rem;
+    header {
+        flex-direction: column;
+        gap: 10px;
     }
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        grid-column: span 1;
+    }
+
+    .hero h2 {
+        font-size: 1.8rem;
     }
 }
